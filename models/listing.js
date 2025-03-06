@@ -54,6 +54,14 @@ const listingSchema = new Schema({
         }
       },
 
+      averageRating: { type: Number, default: 4.90 },
+      cleanlinessRating: { type: Number, default: 5.0 },
+      accuracyRating: { type: Number, default: 5.0 },
+      checkinRating: { type: Number, default: 5.0 },
+      communicationRating: { type: Number, default: 5.0 },
+      locationRating: { type: Number, default: 4.75 },
+      valueRating: { type: Number, default: 5.0 }
+
 });
 
 

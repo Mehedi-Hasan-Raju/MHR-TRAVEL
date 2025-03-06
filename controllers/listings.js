@@ -15,7 +15,34 @@ module.exports.renderNewForm = (req, res) => {
 
  module.exports.showListing =  async (req, res) => {
     let { id } = req.params;
-     id = id.trim();
+     id = id.trim();module.exports.showListing = async (req, res) => {
+        let { id } = req.params;
+        id = id.trim();
+        
+        // Populate reviews and owner
+        const Listing = await listing.findById(id)
+            .populate({
+                path: "reviews",
+                populate: { path: "author" },
+            })
+            .populate("owner");
+    
+        if (!Listing) {
+            req.flash("error", "Listing you requested does not exist");
+            return res.redirect("/listings");
+        }
+    
+        // Calculate average rating
+        if (Listing.reviews.length > 0) {
+            let totalRating = Listing.reviews.reduce((sum, review) => sum + review.rating, 0);
+            Listing.averageRating = (totalRating / Listing.reviews.length).toFixed(2);
+        } else {
+            Listing.averageRating = "No ratings yet";
+        }
+    
+        res.render("listing/show.ejs", { Listing });
+    };
+    
     const Listing = await listing.findById(id)
     .populate({
         path:"reviews",
