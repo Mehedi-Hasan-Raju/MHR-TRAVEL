@@ -42,12 +42,20 @@
         <hr>
         <h4>Select check-in date</h4>
         <p>Minimum stay: 2 nights</p>
-    
-        <label for="checkin">Check-in:</label>
-        <div id="checkin"></div>  <!-- Inline calendar here -->
-    
-        <label for="checkout">Check-out:</label>
-        <div id="checkout"></div>  <!-- Inline calendar here -->
+      
+        <div class="row">
+            <!-- Check-in Calendar -->
+            <div class="col-md-5">
+                <label for="checkin">Check-in:</label>
+                <div id="checkin"></div>  <!-- Inline calendar here -->
+            </div>
+          
+            <!-- Check-out Calendar -->
+            <div class="col-md-5 offset-md-2">
+                <label for="checkout">Check-out:</label>
+                <div id="checkout"></div>  <!-- Inline calendar here -->
+            </div>
+        </div>
     
         <label for="guests">Guests:</label>
         <select id="guests" class="form-control mb-3">
@@ -59,6 +67,7 @@
     
         <button class="btn btn-primary">Check availability</button>
     </div>
+    &nbsp;&nbsp;&nbsp;
     
     <div class="col-8 offset-3">
         <div class="rating-card">
@@ -106,13 +115,6 @@
                     <p><b><%= Listing.valueRating || "5.0" %></b></p>
                 </div>
             </div>
-    
-            <h4>Overall rating</h4>
-            <div class="bar-container">
-                <div class="bar" style="width: '<%= Listing.averageRating ? (Listing.averageRating / 5) * 100  : 0 %>';"></div>
-
-
-                ></div>
             </div>
         </div>
     </div>
