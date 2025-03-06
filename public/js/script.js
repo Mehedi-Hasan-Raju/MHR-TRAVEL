@@ -16,3 +16,28 @@
       }, false)
     })
   })()
+
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#checkin", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr) {
+                let minCheckout = new Date(selectedDates[0]);
+                minCheckout.setDate(minCheckout.getDate() + 2); // Minimum stay of 2 nights
+                flatpickr("#checkout", {
+                    minDate: minCheckout,
+                    dateFormat: "Y-m-d"
+                });
+            }
+        });
+
+        flatpickr("#checkout", {
+            minDate: new Date().fp_incr(2), // Enforce minimum 2-night stay
+            dateFormat: "Y-m-d"
+        });
+    });
+

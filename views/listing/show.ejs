@@ -38,6 +38,28 @@
      &nbsp;
      <br>
      
+     <div class="col-8 offset-3">
+        <hr>
+        <h4>Select check-in date</h4>
+        <p>Minimum stay: 2 nights</p>
+        
+        <label for="checkin">Check-in:</label>
+        <input type="text" id="checkin" class="form-control mb-2" placeholder="Select check-in date">
+    
+        <label for="checkout">Check-out:</label>
+        <input type="text" id="checkout" class="form-control mb-2" placeholder="Select check-out date">
+    
+        <label for="guests">Guests:</label>
+        <select id="guests" class="form-control mb-3">
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+        </select>
+    
+        <button class="btn btn-primary">Check availability</button>
+    </div>
+    
     
      <div class="col-8 offset-3">
         <% if (currUser) { %>
